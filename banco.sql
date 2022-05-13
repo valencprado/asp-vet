@@ -5,6 +5,9 @@ create table tbTipoUsuario(
 codTipoUsuario int primary key auto_increment,
 usuario varchar(50)
 );
+insert into tbTipoUsuario values(default, "admin");
+insert into tbTipoUsuario values(default, "usuário");
+
 
 create table tbLogin(
 usuario varchar(50) primary key,
@@ -12,6 +15,9 @@ senha varchar(10),
 codTipoUsuario int,
 foreign key (codTipoUsuario) references tbTipoUsuario(codTipoUsuario)
 );
+insert into tbLogin values("Console", "123456", 1);
+insert into tbLogin values("Valen", "123456", 2);
+select * from tbLogin;
 
 create table tbCliente(
 codCliente int primary key auto_increment,
