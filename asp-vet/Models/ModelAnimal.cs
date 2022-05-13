@@ -7,9 +7,9 @@ namespace asp_vet.Models
 {
     public class ModelAnimal
     {
-        public int codAnimal { get; set; }
-        public int nomeAnimal { get; set; }
-        public int codTipoAnimal { get; set; }
-        public int codCliente { get; set; }
+        public string codAnimal { get; set; }
+        public string nomeAnimal { get; set; }
+        public string codTipoAnimal { get; set; }
+        public string codCliente { get; set; }
     }
 }

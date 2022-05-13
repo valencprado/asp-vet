@@ -7,11 +7,12 @@ namespace asp_vet.Models
 {
     public class ModelAtendimento
     {
-        public int codAtendimento { get; set; }
-        public int dataAtendimento { get; set; }
-        public int horaAtendimento { get; set; }
-        public int codAnimal { get; set; }
-        public int codVet { get; set; }
-        public int Diag { get; set; }
+        public string codAtendimento { get; set; }
+        public string dataAtendimento { get; set; }
+        public string horaAtendimento { get; set; }
+        public string codAnimal { get; set; }
+        public string codVet { get; set; }
+        public string Diag { get; set; }
+        public string confAgendamento { get; set; }
     }
 }
