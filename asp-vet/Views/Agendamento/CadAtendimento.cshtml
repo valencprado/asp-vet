@@ -1,0 +1,50 @@
+﻿@model asp_vet.Models.ModelAtendimento
+@{
+    ViewBag.Title = "Cadastro de Consulta";
+}
+
+<h2>Cadastro de Consulta</h2>
+
+@using (Html.BeginForm("Agenda"))
+{
+    <label>Agenda</label>
+    <br />
+    <div class="editor-label">
+        @Html.LabelFor(m => m.dataAtendimento)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.dataAtendimento, new { htmlAttributes = new { @type = "date" } })
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.horaAtendimento)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.horaAtendimento, new { htmlAttributes = new { @type = "time" } })
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.codVet)
+    </div>
+    <div class="editor-field">
+
+        @Html.DropDownList("vet", "Veterinário")
+
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.codAnimal)
+    </div>
+    <div class="editor-field">
+
+        @Html.DropDownList("animal", "Animal")
+
+    </div>
+
+    <br />
+    <input type="submit" value="Cadastrar" />
+}
+<br />
+<br />
+
+@ViewBag.msg
