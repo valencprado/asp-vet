@@ -1,0 +1,26 @@
+﻿@model asp_vet.Models.ModelCliente
+@{
+    ViewBag.Title = "CadCliente";
+}
+
+<h2>CadCliente</h2>
+@using (Html.BeginForm("CadCliente", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(m => m.nomeCliente)
+    <br />
+    @Html.EditorFor(m => m.nomeCliente)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.emailCliente)
+    <br />
+    @Html.EditorFor(m => m.emailCliente)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.telCliente)
+    <br />
+    @Html.EditorFor(m => m.telCliente)
+})
+<input type="submit" value="Cadastrar" />
+
+
+@ViewBag.msgCad
