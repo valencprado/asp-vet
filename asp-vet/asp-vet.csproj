@@ -161,7 +161,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AgendamentoController.cs" />
+    <Compile Include="Controllers\AnimalController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipoAnimalController.cs" />
+    <Compile Include="Controllers\VeterinarioController.cs" />
     <Compile Include="Dados\AcoesAnimal.cs" />
     <Compile Include="Dados\AcoesAtendimento.cs" />
     <Compile Include="Dados\AcoesCliente.cs" />
@@ -204,6 +209,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\Menus.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -221,6 +227,15 @@
     <Content Include="Views\Home\SemAcesso.cshtml" />
     <Content Include="Views\Home\MenuAdm.cshtml" />
     <Content Include="Views\Home\MenuUser.cshtml" />
+    <Content Include="Views\Animal\CadAnimal.cshtml" />
+    <Content Include="Views\Cliente\CadCliente.cshtml" />
+    <Content Include="Views\Cliente\ConsCliente.cshtml" />
+    <Content Include="Views\Animal\ConsAnimal.cshtml" />
+    <Content Include="Views\TipoAnimal\CadTipoAnimal.cshtml" />
+    <Content Include="Views\TipoAnimal\ConsTipoAnimal.cshtml" />
+    <Content Include="Views\Veterinario\CadVet.cshtml" />
+    <Content Include="Views\Veterinario\ConsVet.cshtml" />
+    <Content Include="Views\Agendamento\CadAtendimento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,10 +22,10 @@ namespace asp_vet.Controllers
         {
             List<SelectListItem> tipoUsu = new List<SelectListItem>();
 
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbTipoUsuario", con);
+                MySqlCommand cmd = new MySqlCommand("select * from tbTipoUsuario;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -40,6 +40,30 @@ namespace asp_vet.Controllers
 
             }
             ViewBag.tipoUsu = new SelectList(tipoUsu, "Value", "Text");
+        }
+
+        public void carregaLogin()
+        {
+            List<SelectListItem> login = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from tbLogin;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    login.Add(new SelectListItem
+                    {
+                        Text = rdr[1].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+
+            }
+            ViewBag.login = new SelectList(login, "Value", "Text");
         }
 
         public ActionResult Index()
@@ -59,9 +83,24 @@ namespace asp_vet.Controllers
                 Session["usu"] = cm.usuario;
                 Session["tipo"] = cm.codTipoUsuario;
 
-                return RedirectToAction("MenuAdm", "Home");
+                if (Session["usu"] != null && Session["tipo"].ToString() == "1")
+                {
+                    return RedirectToAction("MenuAdm", "Home");
+                }
+                else if (Session["usu"] != null && Session["tipo"].ToString() == "2")
+                {
+                    return RedirectToAction("MenuUser", "Home");
+
+                }
+                else
+                {
+                    ViewBag.msgLogar = "Usuário e/ou senha incorreto(s)";
+                    return View();
+
+                }
+               
             }
-       
+
             else
             {
                 ViewBag.msgLogar = "Usuário e/ou senha incorreto(s)";
@@ -164,9 +203,9 @@ namespace asp_vet.Controllers
 
                 return RedirectToAction("SemAcesso", "Home");
             }
-            
 
-        } 
+
+        }
         public ActionResult MenuUser()
         {
             if (Session["usu"] != null && Session["tipo"].ToString() == "2")
@@ -178,7 +217,7 @@ namespace asp_vet.Controllers
 
                 return RedirectToAction("SemAcesso", "Home");
             }
-            
+
 
         }
     }

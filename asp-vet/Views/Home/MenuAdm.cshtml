@@ -3,6 +3,32 @@
     ViewBag.Title = "MenuAdm";
 }
 
+<link rel="stylesheet" href="~/Views/Home/Menus.css" />
 <h2>Menu - Administrador</h2>
 
 <h2>Bem-vindo(a)!</h2>
+
+<section>
+    <h2>Cadastrar</h2>
+    <ul>
+        <li> @Html.ActionLink("Animal", "CadAnimal", "Animal")</li>
+        <li> @Html.ActionLink("Cliente", "CadCliente", "Cliente")</li>
+        <li> @Html.ActionLink("Login", "CadLogin", "Login")</li>
+        <li> @Html.ActionLink("Tipo de Animal", "CadTipoAnimal", "TipoAnimal")</li>
+        <li> @Html.ActionLink("Veterinário", "CadVet", "Veterinario")</li>
+    </ul>
+    <h2>Consultar</h2>
+    <ul>
+        <li> @Html.ActionLink("Animal", "ConsAnimal", "Animal")</li>
+        <li> @Html.ActionLink("Cliente", "ConsCliente", "Cliente")</li>
+        <li> @Html.ActionLink("Login", "ConsLogin", "Login")</li>
+        <li> @Html.ActionLink("Tipo de Animal", "ConsTipoAnimal", "TipoAnimal")</li>
+        <li> @Html.ActionLink("Veterinário", "ConsVet", "Veterinario")</li>
+    </ul>
+
+    <h2>Agendamentos</h2>
+    <ul>
+        <li>Consultar</li>
+        <li>Novo</li>
+    </ul>
+</section>
