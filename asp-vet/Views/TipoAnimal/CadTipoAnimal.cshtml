@@ -1,0 +1,17 @@
+﻿@model asp_vet.Models.ModelTipoAnimal
+@{
+    ViewBag.Title = "Cadastro - Tipos de Animais";
+}
+
+<h2>Cadastro - Tipos de Animais</h2>
+@using (Html.BeginForm("CadTipoAnimal", "TipoAnimal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(m => m.TipoAnimal)
+    <br />
+    @Html.EditorFor(m => m.TipoAnimal)
+
+    <br />
+    <input type="submit" value="Cadastrar" />
+
+}
+@ViewBag.msgCad
