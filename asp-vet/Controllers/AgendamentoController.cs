@@ -41,7 +41,7 @@ namespace asp_vet.Controllers
             using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbVeterinario;");
+                MySqlCommand cmd = new MySqlCommand("select * from tbVeterinario;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())

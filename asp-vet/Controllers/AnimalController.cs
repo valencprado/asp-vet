@@ -21,10 +21,10 @@ namespace asp_vet.Controllers
         {
 
             List<SelectListItem> tipoAnimal = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdClinica;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from TipoAnimal;");
+                MySqlCommand cmd = new MySqlCommand("select * from tbtipoanimal;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {

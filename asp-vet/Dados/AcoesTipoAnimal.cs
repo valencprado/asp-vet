@@ -22,7 +22,7 @@ namespace asp_vet.Dados
 
         public DataTable ConsultarTipoAnimal()
         {
-            MySqlCommand cmd = new MySqlCommand("select * from tbTipoAnimal", con.MyDesconectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from TipoAnimal", con.MyDesconectarBD());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataTable TipoA = new DataTable();
             da.Fill(TipoA);
