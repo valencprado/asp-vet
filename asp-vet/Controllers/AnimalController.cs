@@ -21,10 +21,10 @@ namespace asp_vet.Controllers
         {
 
             List<SelectListItem> tipoAnimal = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdClinica;User=root;pwd=Figure.09"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbtipoanimal;", con);
+                MySqlCommand cmd = new MySqlCommand("select * from tipoanimal;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -37,12 +37,12 @@ namespace asp_vet.Controllers
                 }
                 con.Close();
             }
-            ViewBag.tipoAnimal = new SelectList(tipoAnimal, "Value", "Text");
+            ViewBag.tipo = new SelectList(tipoAnimal, "Value", "Text");
         }
         public void CarregaCliente()
         {
             List<SelectListItem> cliente = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("Select * from tbCliente", con);
@@ -66,7 +66,7 @@ namespace asp_vet.Controllers
         {
             List<SelectListItem> animal = new List<SelectListItem>();
 
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from tbAnimal;", con);

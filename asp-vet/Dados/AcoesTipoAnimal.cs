@@ -14,7 +14,7 @@ namespace asp_vet.Dados
 
         public void InserirTipoAnimal(ModelTipoAnimal cmTipoA) 
         {
-            MySqlCommand cmd = new MySqlCommand("insert into tbTipoAnimal values (default, @tipoAnimal)", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into TipoAnimal values (default, @tipoAnimal)", con.MyConectarBD());
             cmd.Parameters.Add("@tipoAnimal", MySqlDbType.VarChar).Value = cmTipoA.TipoAnimal;
             cmd.ExecuteNonQuery();
             con.MyDesconectarBD();
