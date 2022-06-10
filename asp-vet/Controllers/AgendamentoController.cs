@@ -15,7 +15,7 @@ namespace asp_vet.Controllers
         {
             List<SelectListItem> animal = new List<SelectListItem>();
 
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from tbAnimal", con);
@@ -38,7 +38,7 @@ namespace asp_vet.Controllers
         public void CarregaVet()
         {
             List<SelectListItem> vet = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from tbVeterinario;", con);

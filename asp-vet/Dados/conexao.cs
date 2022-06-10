@@ -8,7 +8,7 @@ namespace asp_vet.Dados
 {
     public class conexao
     {
-        MySqlConnection cn = new MySqlConnection("Server=localhost; DataBase=bdVeterinaria; User=root;pwd=Figure.09");
+        MySqlConnection cn = new MySqlConnection("Server=localhost; DataBase=bdVeterinaria; User=root;pwd=12345678");
         public static string msg;
 
         public MySqlConnection MyConectarBD()
