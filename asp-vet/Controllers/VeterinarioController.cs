@@ -16,31 +16,27 @@ namespace asp_vet.Controllers
     {
         AcoesVeterinario av = new AcoesVeterinario();
 
-        public void CarregaVet() 
+        public void CarregaVet()
         {
             List<SelectListItem> vet = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbVeterinario", con);
+                MySqlCommand cmd = new MySqlCommand("Select * from tbveterinario order by nomevet;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-
                 while (rdr.Read())
                 {
-                    vet.Add(new SelectListItem 
+                    vet.Add(new SelectListItem
                     {
                         Text = rdr[1].ToString(),
                         Value = rdr[0].ToString()
-
                     });
-
-                    con.Close();
                 }
-                ViewBag.vet = new SelectList(vet, "Value", "Text");
-                        
-                    
+                con.Close();
+
             }
-        
+            ViewBag.vet = new SelectList(vet, "Value", "Text");
+
         }
 
         public ActionResult CadVet()
