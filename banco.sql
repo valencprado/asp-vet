@@ -15,6 +15,8 @@ senha varchar(10),
 codTipoUsuario int,
 foreign key (codTipoUsuario) references tbTipoUsuario(codTipoUsuario)
 );
+
+
 insert into tbLogin values("Console", "123456", 1);
 insert into tbLogin values("Valen", "123456", 2);
 select * from tbLogin;
@@ -25,9 +27,11 @@ nomeCliente varchar(50),
 telefoneCliente varchar(12),
 emailCliente varchar(50)
 );
+insert into tbcliente values(default, 'Luis', '11912345678', 'luis@gmail.com');
+
 
 create table tipoAnimal(
-codTipoAnimal int primary key auto_increment,
+codTipo int primary key auto_increment,
 tipoAnimal varchar(30)
 );
 
@@ -36,14 +40,16 @@ codAnimal int primary key auto_increment,
 nomeAnimal varchar(50),
 codTipoAnimal int,
 codCliente int,
-foreign key (codTipoAnimal) references tipoAnimal(codTipoAnimal),
+foreign key (codTipoAnimal) references tipoAnimal(codTipo),
 foreign key (codCliente) references tbCliente(codCliente)
 );
+insert into tbanimal values(default, 'Luna', 1, 1);
 
 create table tbVeterinario(
 codVet int primary key auto_increment,
 nomeVet varchar(50)
 );
+insert into tbveterinario values(default, 'Celso');
 
 create table tbAtendimento(
 codAtendimento int primary key auto_increment,
@@ -51,5 +57,10 @@ DataAtendimento varchar(20),
 HoraAtendimento varchar(8),
 codAnimal int,
 codVet int,
-Diag varchar(50)
+Diag varchar(50),
+foreign key (codAnimal) references tbAnimal(codAnimal),
+foreign key (codVet) references tbveterinario(codVet)
 );
+
+
+
