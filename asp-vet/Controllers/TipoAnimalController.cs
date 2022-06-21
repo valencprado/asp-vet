@@ -21,7 +21,7 @@ namespace asp_vet.Controllers
         {
 
             List<SelectListItem> tipoAnimal = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678")) 
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09")) 
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from TipoAnimal;", con);

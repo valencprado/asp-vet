@@ -21,7 +21,7 @@ namespace asp_vet.Controllers
         {
 
             List<SelectListItem> tipoAnimal = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from tipoanimal;", con);
@@ -42,10 +42,10 @@ namespace asp_vet.Controllers
         public void CarregaCliente()
         {
             List<SelectListItem> cliente = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("Select * from tbCliente", con);
+                MySqlCommand cmd = new MySqlCommand("Select * from tbCliente order by nomecliente;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -66,10 +66,10 @@ namespace asp_vet.Controllers
         {
             List<SelectListItem> animal = new List<SelectListItem>();
 
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbAnimal;", con);
+                MySqlCommand cmd = new MySqlCommand("select * from tbAnimal order by NomeAnimal;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -102,7 +102,7 @@ namespace asp_vet.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadTipo(ModelAnimal cmAnimal)
+        public ActionResult CadAnimal(ModelAnimal cmAnimal)
         {
             if (Session["usu"] != null && Session["tipo"].ToString() == "1")
             {
