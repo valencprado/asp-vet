@@ -130,7 +130,7 @@ namespace asp_vet.Controllers
 
         public ActionResult ConsAnimal()
         {
-            if (Session["usu"] != null && Session["tipo"].ToString() == "1")
+            if (Session["usu"] != null)
             {
                 GridView dgv = new GridView();
                 dgv.DataSource = am.ConsultarAnimal();
