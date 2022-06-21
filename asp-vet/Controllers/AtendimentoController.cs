@@ -9,16 +9,39 @@ using System.Web.Mvc;
 
 namespace asp_vet.Controllers
 {
-    public class AgendamentoController : Controller
+    public class AtendimentoController : Controller
     {
+        public void CarregaVet()
+        {
+            List<SelectListItem> vet = new List<SelectListItem>();
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("Select * from tbveterinario order by nomevet;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    vet.Add(new SelectListItem
+                    {
+                        Text = rdr[1].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+
+            }
+            ViewBag.vet = new SelectList(vet, "Value", "Text");
+
+        }
+
         public void CarregaAnimal()
         {
             List<SelectListItem> animal = new List<SelectListItem>();
 
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=Figure.09"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbAnimal", con);
+                MySqlCommand cmd = new MySqlCommand("select * from tbAnimal order by NomeAnimal;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -34,63 +57,27 @@ namespace asp_vet.Controllers
             }
             ViewBag.animal = new SelectList(animal, "Value", "Text");
         }
+            AcoesAtendimento acAtend = new AcoesAtendimento();
 
-        public void CarregaVet()
-        {
-            List<SelectListItem> vet = new List<SelectListItem>();
-            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=bdVeterinaria;User=root;pwd=12345678"))
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from tbVeterinario;", con);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    vet.Add(new SelectListItem
-                    {
-                        Text = rdr[1].ToString(),
-                        Value = rdr[0].ToString()
-
-                    });
-
-                    con.Close();
-                }
-                ViewBag.vet = new SelectList(vet, "Value", "Text");
-
-
-            }
-
-        }
-
-        AcoesAtendimento acAtend = new AcoesAtendimento();
-
-        public ActionResult Index()
-        {
-
-            if (Session["usu"] != null && Session["tipo"].ToString() == "1")
-            {
-                return View();
-            }
-            else
-            {
-
-                return RedirectToAction("SemAcesso", "Home");
-            }
-        }
         public ActionResult CadAtendimento() // abre a tela
         {
-            Session["tipo"] = "";
-            CarregaAnimal();
-            CarregaVet();
+            if (Session["usu"] != null && Session["tipo"].ToString() == "1")
+            {
+                CarregaAnimal();
+                CarregaVet();
+
+            }
             return View();
         }
+
         [HttpPost]
         public ActionResult CadAtendimento(ModelAtendimento cmAtend) // cadastra no banco
         {
-            Session["tipo"] = "";
-            CarregaAnimal();
-            CarregaVet();
-            acAtend.TestarAgenda(cmAtend);
+            if (Session["usu"] != null && Session["tipo"].ToString() == "1") 
+            {
+                CarregaAnimal();
+                CarregaVet();
+                acAtend.TestarAgenda(cmAtend);
 
             if (cmAtend.confAgendamento == "0")
             {
@@ -98,12 +85,19 @@ namespace asp_vet.Controllers
             }
             else
             {
-                cmAtend.codVet = Request["vet"];
+                    CarregaAnimal();
+                    CarregaVet();
+                    cmAtend.codVet = Request["veterinario"];
                 cmAtend.codAnimal = Request["animal"];
                 acAtend.InserirAtendimento(cmAtend);
                 ViewBag.msg = "Cadastro Realizado com sucesso!";
             }
 
+            }
+            else
+            {
+                return RedirectToAction("SemAcesso", "Home");
+            }
             return View();
         }
     }
