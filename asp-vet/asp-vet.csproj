@@ -161,7 +161,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AgendamentoController.cs" />
+    <Compile Include="Controllers\AtendimentoController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -235,7 +235,8 @@
     <Content Include="Views\TipoAnimal\ConsTipoAnimal.cshtml" />
     <Content Include="Views\Veterinario\CadVet.cshtml" />
     <Content Include="Views\Veterinario\ConsVet.cshtml" />
-    <Content Include="Views\Agendamento\CadAtendimento.cshtml" />
+    <Content Include="Views\Home\CadLogin.cshtml" />
+    <Content Include="Views\Atendimento\CadAtendimento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
